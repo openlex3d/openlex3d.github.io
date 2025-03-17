@@ -45,6 +45,27 @@
   <script src="static/js/index.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://your-plugin-url.com/beforeafter.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@latest/dist/model-viewer.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    .modelviewer-container {
+        width: 50%;
+        max-width: 32em;
+    }
+
+    model-viewer {
+        border-radius: 0.5em;
+        width: 100%;
+        max-width: 32em;
+        max-height: 27.5em;
+        height: auto;
+        aspect-ratio: 32 / 27.5;
+        border: none;
+        box-shadow: 0 0 1em 0em rgba(0, 0, 0, 0.15);
+    }
+</style>
 </head>
 <body>
 
@@ -170,6 +191,200 @@
       </div>
     </div>
   </div>
+</section>
+
+
+<section class="section has-background-light">
+  <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+              <h2 class="title is-3">Evaluation Outputs</h2>
+              <div class="columns is-centered has-text-justified">
+                  <p> Insert text here
+
+                  </p>
+              </div>
+              <br>
+              <br>
+              <div class="hide-on-touchscreens" style="
+              display: flex;
+              justify-content: center;
+              gap: 1.5em;
+              padding-top: 0.5em;
+            ">
+                      <div>
+                          <i class="ti ti-view-360-arrow"></i> <strong>Left-click</strong> and
+                          drag to rotate
+                      </div>
+                      <div>
+                          <i class="ti ti-arrows-move"></i> <strong>Right-click</strong> and
+                          drag or
+                          <strong>WASD</strong>
+                          to move
+                      </div>
+                      <div><i class="ti ti-zoom"></i> <strong>Scroll</strong> to zoom</div>
+                  </div>
+    
+
+              <br>
+              <br>
+              <div id="wrapper" style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2em;
+          ">
+                  <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width, fits 3 in a row -->
+                    <h3><strong>Concept Graphs</strong></h3>
+                    <br>
+                    <model-viewer id="model1" camera-orbit="0.966rad 1.54rad 16.4m"
+                        camera-target="1.33m -0.32m 1.6m" data-src="./static/glbs_gd/cg-room0.glb"
+                        alt="cg" camera-controls interaction-prompt="none">
+                    </model-viewer>
+                  </div>
+        
+                  <!-- Model Viewer 2 -->
+                  <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
+                    <h3><strong>HOV-SG</strong></h3>
+                    <br>
+                    <model-viewer id="model2" camera-orbit="0.966rad 1.54rad 16.4m"
+                        camera-target="1.33m -0.32m 1.6m" data-src="./static/glbs_gd/hovsg-room0.glb"
+                        alt="hovsg" camera-controls interaction-prompt="none">
+                    </model-viewer>
+                  </div>
+        
+                  <!-- Model Viewer 3 -->
+                  <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
+                    <h3><strong>OpenMask3D</strong></h3>
+                    <br>
+                    <model-viewer id="model3" camera-orbit="0.966rad 1.54rad 16.4m"
+                        camera-target="1.33m -0.32m 1.6m" data-src="./static/glbs_gd/om3d-room0.glb"
+                        alt="om3d" camera-controls interaction-prompt="none">
+                    </model-viewer>
+                  </div>
+
+                    <!-- Model Viewer 4-->
+                    <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
+                      <h3><strong>ConceptGraphs (GPT)</strong></h3>
+                      <br>
+                      <model-viewer id="model4"camera-orbit="0.966rad 1.54rad 16.4m"
+                          camera-target="1.33m -0.32m 1.6m" data-src="./static/glbs_gd/missing.glb"
+                          alt="cg-gpt" camera-controls interaction-prompt="none">
+                      </model-viewer>
+                    </div>
+
+                     <!-- Model Viewer 5-->
+                     <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
+                      <h3><strong>Kassab2024</strong></h3>
+                      <br>
+                      <model-viewer id="model5" camera-orbit="0.966rad 1.54rad 16.4m"
+                          camera-target="1.33m -0.32m 1.6m" data-src="./static/glbs_gd/kassab-room0.glb"
+                          alt="kassab" camera-controls interaction-prompt="none">
+                      </model-viewer>
+                    </div>
+
+                    <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
+                      <h3><strong>ConceptFusion</strong></h3>
+                      <br>
+                      <model-viewer id="model6" camera-orbit="0.966rad 1.54rad 16.4m"
+                          camera-target="1.33m -0.32m 1.6m" data-src="./static/glbs_gd/cf-room0.glb"
+                          alt="cf" camera-controls interaction-prompt="none">
+                      </model-viewer>
+                    </div>
+
+                    <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
+                      <h3><strong>OpenScene</strong></h3>
+                      <br>
+                      <model-viewer id="model7" camera-orbit="0.966rad 1.54rad 16.4m"
+                          camera-target="1.33m -0.32m 1.6m" data-src="./static/glbs_gd/openscene-room0.glb"
+                          alt="openscene" camera-controls interaction-prompt="none">
+                      </model-viewer>
+                    </div>
+              </div>
+              <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    // Initialize model viewers and observers
+                    const models = [];
+                    const modelCount = 7; // Change this number if the number of models changes
+            
+                    for (let i = 1; i <= modelCount; i++) {
+                        const modelViewer = document.getElementById(`model${i}`);
+                        models.push(modelViewer);
+            
+                        const observer = new IntersectionObserver((entries) => {
+                            if (entries[0].isIntersecting) {
+                                const realSrc = modelViewer.dataset.src;
+                                modelViewer.setAttribute('src', realSrc);
+                                observer.unobserve(modelViewer);
+                            }
+                        });
+                        observer.observe(modelViewer);
+            
+                        modelViewer.addEventListener('load', () => {
+                            const threeCamera = modelViewer.getCameraOrbit();
+                            const fov = 17.6;
+                            modelViewer.camera.fieldOfView = fov;
+                            modelViewer.camera.updateProjectionMatrix();
+                        });
+                    }
+                });
+            
+                // Syncing logic for all models
+                let syncing = false;
+                let syncTimeouts = Array(7).fill(null); // Array to store timeout IDs for each model
+                const SYNC_DELAY_MS = 100;
+            
+                // Loop to set up camera synchronization for each model
+                for (let i = 1; i <= 7; i++) {
+                    const model = document.getElementById(`model${i}`);
+            
+                    model.addEventListener('camera-change', () => {
+                        if (!syncing) {
+                            if (syncTimeouts[i - 1]) {
+                                clearTimeout(syncTimeouts[i - 1]);
+                            }
+            
+                            syncTimeouts[i - 1] = setTimeout(() => {
+                                syncing = true;
+            
+                                // Synchronize cameras between all models
+                                for (let j = 1; j <= 7; j++) {
+                                    if (i !== j) {
+                                        const sourceModel = document.getElementById(`model${i}`);
+                                        const targetModel = document.getElementById(`model${j}`);
+                                        copyCameraSettings(sourceModel, targetModel);
+                                    }
+                                }
+            
+                                requestAnimationFrame(() => {
+                                    syncing = false;
+                                });
+                            }, SYNC_DELAY_MS);
+                        }
+                    });
+                }
+            
+                // Function to copy camera settings from one model to another
+                function copyCameraSettings(sourceModel, targetModel) {
+                    const orbit = sourceModel.getCameraOrbit();
+                    const fieldOfView = sourceModel.getFieldOfView();
+                    const target = sourceModel.getCameraTarget();
+            
+                    targetModel.cameraOrbit = `${orbit.theta}rad ${orbit.phi}rad ${orbit.radius}m`;
+                    targetModel.fieldOfView = `${fieldOfView}deg`;
+                    targetModel.cameraTarget = `${target.x}m ${target.y}m ${target.z}m`;
+            
+                    console.log('Camera Orbit:', targetModel.cameraOrbit);
+                    console.log('Camera FOV:', targetModel.fieldOfView);
+                    console.log('Camera Target:', targetModel.cameraTarget);
+                }
+            </script>
+             
+
+          </div>
+      </div>
+  </div><br>
 </section>
 
 <!-- 
