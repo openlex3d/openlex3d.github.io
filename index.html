@@ -508,9 +508,15 @@
           <div class="column is-four-fifths">
               <h2 class="title is-3">Semantic Segmentation Evaluation</h2>
               <div class="columns is-centered has-text-justified">
-                  <p> We show Top-5 IoU results colored by category class. Object-centric methods that segment in 3D (OpenMask3D, Kassab2024) often miss points due to generalization or depth quality issues. Those merging 2D segments (ConceptGraphs, HOV-SG) tend to merge small segments together, leading to misclassifications. Desne representations (ConceptFusion, OpenScene) produce noisier predictions due to point-level features aggregating information from various context scales.
-                  </p>
-              </div>
+                <div class="column">
+                    <p> We show Top-5 IoU results colored by category class. Object-centric methods that segment in 3D (OpenMask3D, Kassab2024) often miss points due to generalization or depth quality issues. Those merging 2D segments (ConceptGraphs, HOV-SG) tend to merge small segments together, leading to misclassifications. Dense representations (ConceptFusion, OpenScene) produce noisier predictions due to point-level features aggregating information from various context scales.</p>
+            
+                    <p>For set ranking and object retrieval results tables check out the paper. We also provide evaluation visualization tools in our toolkit.</p>
+                </div>
+            </div>
+              <p style="text-align: left;">
+                For set ranking and object retrieval results tables check out the paper. We also provide evaluation visualization tools in our toolkit.
+              </p>
               <br>
               <br>
               <div class="hide-on-touchscreens" style="
