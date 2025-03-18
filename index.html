@@ -170,7 +170,7 @@
       <img src="static/images/hero_fig_new.svg" alt="Banner Image" id="tree" style="width: 100%; height: auto;">
       
       <h2 class="subtitle has-text-centered">
-        The OpenLex3D evaluation benchmark enables detailed analysis of open-vocabulary 3D scene representations compared to closed-vocabulary evaluation methods.
+        <strong>TL;DR</strong> Unlike closed-vocabulary evaluation, the OpenLex3D evaluation benchmark provides a manifold of label categories of varying precision which allows detailed analysis of open-vocabulary scene representation methods.
       </h2>
     </div>
   </div>
@@ -193,15 +193,29 @@
   </div>
 </section>
 
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            Insert text here
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
 
-<section class="section">
+
+<section class="section hero is-light">
   <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
-              <h2 class="title is-3">Evaluation Outputs</h2>
+              <h2 class="title is-3">Instance Segmentation Evaluation</h2>
               <div class="columns is-centered has-text-justified">
-                  <p> Insert text here
-
+                  <p> We show Top-5 IoU results colored by category class. Object-centric methods that segment in 3D (OpenMask3D, Kassab2024) often miss points due to generalization or depth quality issues. Those merging 2D segments (ConceptGraphs, HOV-SG) tend to merge small segments together, leading to misclassifications. Desne representations (ConceptFusion, OpenScene) produce noisier predictions due to point-level features aggregating information from various context scales.
                   </p>
               </div>
               <br>
@@ -224,10 +238,7 @@
                       </div>
                       <div><i class="ti ti-zoom"></i> <strong>Scroll</strong> to zoom</div>
                   </div>
-    
-
-              <br>
-              <br>
+                  <br>
               <div id="wrapper" style="
             display: flex;
             flex-wrap: wrap;
@@ -236,11 +247,11 @@
             gap: 2em;
           ">
                   <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width, fits 3 in a row -->
-                    <h3><strong>Concept Graphs</strong></h3>
+                    <h3><strong>ConceptGraphs</strong></h3>
                     <br>
                     <model-viewer id="model1" camera-orbit="-0.5479deg 88.7deg 14.18m"
                         camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/cg-room0.glb"
-                        alt="cg" camera-controls interaction-prompt="none" exposure="0.7">
+                        alt="cg" camera-controls interaction-prompt="none" exposure="0.5">
                     </model-viewer>
                   </div>
         
@@ -250,7 +261,7 @@
                     <br>
                     <model-viewer id="model2" camera-orbit="-0.5479deg 88.7deg 14.18m"
                     camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/hovsg-room0.glb"
-                        alt="hovsg" camera-controls interaction-prompt="none" exposure="0.7">
+                        alt="hovsg" camera-controls interaction-prompt="none" exposure="0.5">
                     </model-viewer>
                   </div>
         
@@ -260,7 +271,7 @@
                     <br>
                     <model-viewer id="model3" camera-orbit="-0.5479deg 88.7deg 14.18m"
                     camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/om3d-room0.glb"
-                        alt="om3d" camera-controls interaction-prompt="none" exposure="0.7">
+                        alt="om3d" camera-controls interaction-prompt="none" exposure="0.5">
                     </model-viewer>
                   </div>
 
@@ -270,7 +281,7 @@
                       <br>
                       <model-viewer id="model4" camera-orbit="-0.5479deg 88.7deg 14.18m"
                       camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/cg-gpt-room0.glb"
-                          alt="cg-gpt" camera-controls interaction-prompt="none" exposure="0.7">
+                          alt="cg-gpt" camera-controls interaction-prompt="none" exposure="0.5">
                       </model-viewer>
                     </div>
 
@@ -280,7 +291,7 @@
                       <br>
                       <model-viewer id="model5" camera-orbit="-0.5479deg 88.7deg 14.18m"
                       camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/kassab-room0.glb"
-                          alt="kassab" camera-controls interaction-prompt="none" exposure="0.7">
+                          alt="kassab" camera-controls interaction-prompt="none" exposure="0.5">
                       </model-viewer>
                     </div>
 
@@ -289,7 +300,7 @@
                       <br>
                       <model-viewer id="model6" camera-orbit="-0.5479deg 88.7deg 14.18m"
                       camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/cf-room0.glb"
-                          alt="cf" camera-controls interaction-prompt="none" exposure="0.7">
+                          alt="cf" camera-controls interaction-prompt="none" exposure="0.5">
                       </model-viewer>
                     </div>
 
@@ -298,10 +309,12 @@
                       <br>
                       <model-viewer id="model7" camera-orbit="-0.5479deg 88.7deg 14.18m"
                       camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/openscene-room0.glb"
-                          alt="openscene" camera-controls interaction-prompt="none" exposure="0.7">
+                          alt="openscene" camera-controls interaction-prompt="none" exposure="0.5">
                       </model-viewer>
                     </div>
               </div>
+              <br>
+              <img src="static/images/legend.svg" alt="Banner Image" id="tree" style="width: 100%; height: auto;">
               <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     // Initialize model viewers and observers
@@ -384,128 +397,23 @@
 
           </div>
       </div>
-  </div><br>
-</section>
-
-<!-- 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
-
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-
-
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
-    </div>
-</section>
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
+<!-- <section class="section"> 
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Acknowledgements</h2>
+        <div class="content has-text-justified">
           <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
+            We would like to thank everyone involved in the annotation for this benchmark: James Willoughby, Frances Hand, Mandolyn Morin,
           </p>
-
         </div>
       </div>
     </div>
   </div>
-</footer>  -->
+</section>  -->
 
 <!-- Statcounter tracking code -->
   
