@@ -50,6 +50,96 @@
   <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
+    .center-image {
+        display: block;
+        margin: 0 auto;
+    }
+
+
+    .blend-img-item {
+        background: #f5f5f5;
+    }
+
+    .item {
+        margin: 10px;
+    }
+
+    .blend-img-background {
+        mix-blend-mode: multiply;
+    }
+
+    #interactive {
+        position: relative;
+        display: inline-block;
+        width: 768px;
+        aspect-ratio: 16/9;
+        max-width: 100%;
+        border: 2px solid #fff;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 0 4px #000;
+
+    }
+
+    #interactive canvas,
+    #interactive #glfailed,
+    #interactive #loading {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+    }
+
+    #interactive #glfailed {
+        color: #f88;
+        background: black;
+        display: none;
+    }
+
+    #interactive #loading {
+        color: #000;
+        font-size: 32px;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.8);
+        display: none;
+    }
+
+    .iframe-container {
+        width: 50%;
+        max-width: 32em;
+    }
+
+    .vframe {
+        border-radius: 0.5em;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 32 / 27.5;
+        max-width: 32em;
+        max-height: 27.5em;
+        border: none;
+        box-shadow: 0 0 1em 0em rgba(0, 0, 0, 0.15);
+    }
+
+    .large-vframe {
+        border-radius: 0.5em;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 32 / 18;
+        max-width: 64em;
+        max-height: 36em;
+        border: none;
+        box-shadow: 0 0 1em 0em rgba(0, 0, 0, 0.15);
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
     .modelviewer-container {
         width: 50%;
         max-width: 32em;
@@ -64,6 +154,187 @@
         aspect-ratio: 32 / 27.5;
         border: none;
         box-shadow: 0 0 1em 0em rgba(0, 0, 0, 0.15);
+    }
+
+    .siframe-class {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 1vw;
+        padding: 1vw;
+        align-items: start;
+    }
+
+    .siframe-class .image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1vw;
+        flex: 1 0 40%;
+        max-width: 384px;
+    }
+
+    .siframe-class .image-grid img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .siframe-class .iframe-container {
+        flex: 1 0 60%;
+        max-width: 640px;
+    }
+
+    .siframe-class iframe {
+        width: 100%;
+        border-radius: 0.5em;
+        max-width: 640px;
+        height: auto;
+        aspect-ratio: 5 / 4;
+        border: none;
+        box-shadow: 0 0 1em 0em rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+
+        .large-vframe {
+            width: 100%;
+        }
+
+        .iframe-container {
+            width: 100%;
+        }
+
+        model-viewer {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+    }
+
+    .load img {
+        width: 100px;
+        height: 70px;
+        object-fit: cover;
+        margin: 4px;
+        border: 2px solid #fff;
+        box-shadow: 0 0 4px #888;
+        border-radius: 6px;
+        vertical-align: bottom;
+    }
+
+    .load img:active {
+        box-shadow: 0 0 4px #000;
+        opacity: .8;
+    }
+
+    .megabuttons {
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        text-transform: uppercase;
+        text-align: left;
+    }
+
+    nav {
+        text-align: center;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        width: 100%;
+        gap: 10px;
+    }
+
+    nav ul li {
+        flex: 1;
+        display: flex;
+        margin: 0;
+    }
+
+    nav ul li a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f5f5f5;
+        color: #363636;
+        padding: 10px 20px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        min-height: 50px;
+        flex-grow: 1;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+
+    nav ul li a:hover {
+        background-color: #e4e4e4;
+        transform: scale(1.05);
+    }
+
+    nav ul li a:active {
+        background-color: #d3d3d3;
+        transform: scale(0.95);
+    }
+
+    nav ul li a.active {
+        background-color: #cccccc; /* Change color to indicate active tab */
+        color: #000000; /* Optional: Change text color if needed */
+    }
+
+
+    .dynamic-section {
+        display: none;
+        padding: 1rem 0;
+    }
+
+
+
+    .grid-container-2x6 {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 10px;
+        padding: 20px;
+        max-width: 80%;
+        margin: auto;
+    }
+
+    .grid-container-2x6 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .grid-container-1x6 {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(1, auto);
+        gap: 10px;
+        padding: 20px;
+        max-width: 80%;
+        margin: auto;
+    }
+
+    .grid-container-1x6 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .panel-style {
+        background-color: #fafafa;
+        padding: 20px;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        border-radius: 8px;
     }
 </style>
 </head>
@@ -193,27 +464,49 @@
   </div>
 </section>
 
-<!-- <section class="section">
+<section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
-        <div class="content has-text-justified">
-          <p>
-            Insert text here
-          </p>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-left">
+        <div class="has-text-centered">
+          <h2 class="title is-3">Benchmark Design</h2>
+            <img src="static/images/example-labels.svg" id="example-labels" style="width: 70%; height: auto;">
         </div>
+        <br>
+          <p>
+            We create new label sets for three widely-used RGB-D datasets: ScanNet++, Replica, and HM3D. The label sets consist of different categories with varying precision: <i>synonyms</i> being the most precise; <i>depictions</i>, which include, e.g. printed images on objects; <i>visually similar</i>, which refer to objects with comparable appearance; and <i>clutter</i>, which acccounts for label pertubation due to imprecise segmentation or crop scaling.
+          </p>
       </div>
     </div>
   </div>
-</section> -->
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-left">
+        <div class="has-text-centered">
+          <h2 class="title is-3">Metrics</h2>
+            <img src="static/images/metrics-web.svg" id="example-labels" style="width: 100%; height: auto;">
+        </div>
+          <p>
+           We provide evaluation on two tasks using our label sets: semantic segmentation and object retrieval given a text query. We introduce two novel open-set metrics (above) for segmentation and an extended query set for object retrieval. 
+          </p>
+          <br>
+          <p>
+            The two semantic segmentation metrics evaluate on either the object-level or the feature level. (a) Top-N IoU measures whether any of the top-N responses contain a label from category C. (b) Set Ranking evaluates the ranking of the responses, assessing how closely the predicted rankings align with ideal rankings of categories.
+           </p>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <section class="section hero is-light">
   <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
-              <h2 class="title is-3">Instance Segmentation Evaluation</h2>
+              <h2 class="title is-3">Semantic Segmentation Evaluation</h2>
               <div class="columns is-centered has-text-justified">
                   <p> We show Top-5 IoU results colored by category class. Object-centric methods that segment in 3D (OpenMask3D, Kassab2024) often miss points due to generalization or depth quality issues. Those merging 2D segments (ConceptGraphs, HOV-SG) tend to merge small segments together, leading to misclassifications. Desne representations (ConceptFusion, OpenScene) produce noisier predictions due to point-level features aggregating information from various context scales.
                   </p>
@@ -247,7 +540,7 @@
             gap: 2em;
           ">
                   <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width, fits 3 in a row -->
-                    <h3><strong>ConceptGraphs</strong></h3>
+                    <h3><a href="https://concept-graphs.github.io/"><strong>ConceptGraphs</strong></a></h3>
                     <br>
                     <model-viewer id="model1" camera-orbit="-0.5479deg 88.7deg 14.18m"
                         camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/cg-room0.glb"
@@ -257,7 +550,7 @@
         
                   <!-- Model Viewer 2 -->
                   <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
-                    <h3><strong>HOV-SG</strong></h3>
+                    <h3><a href="https://hovsg.github.io/"><strong>HOV-SG</strong></a></h3>
                     <br>
                     <model-viewer id="model2" camera-orbit="-0.5479deg 88.7deg 14.18m"
                     camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/hovsg-room0.glb"
@@ -267,7 +560,7 @@
         
                   <!-- Model Viewer 3 -->
                   <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
-                    <h3><strong>OpenMask3D</strong></h3>
+                    <h3><a href="https://openmask3d.github.io/"><strong>OpenMask3D</strong></a></h3>
                     <br>
                     <model-viewer id="model3" camera-orbit="-0.5479deg 88.7deg 14.18m"
                     camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/om3d-room0.glb"
@@ -287,7 +580,7 @@
 
                      <!-- Model Viewer 5-->
                      <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
-                      <h3><strong>Kassab2024</strong></h3>
+                      <h3><a href="https://arxiv.org/abs/2412.01539"><strong>Kassab2024</strong></a></h3>
                       <br>
                       <model-viewer id="model5" camera-orbit="-0.5479deg 88.7deg 14.18m"
                       camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/kassab-room0.glb"
@@ -296,7 +589,7 @@
                     </div>
 
                     <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
-                      <h3><strong>ConceptFusion</strong></h3>
+                      <h3><a href="https://concept-fusion.github.io/"><strong>ConceptFusion</strong></a></h3>
                       <br>
                       <model-viewer id="model6" camera-orbit="-0.5479deg 88.7deg 14.18m"
                       camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/cf-room0.glb"
@@ -305,7 +598,8 @@
                     </div>
 
                     <div class="modelviewer-container" style="flex: 0 1 30%;"> <!-- Takes up 30% width -->
-                      <h3><strong>OpenScene</strong></h3>
+                      <h3><a href="https://pengsongyou.github.io/openscene"><strong>OpenScene</strong></a></h3>
+                      <br>
                       <br>
                       <model-viewer id="model7" camera-orbit="-0.5479deg 88.7deg 14.18m"
                       camera-target="2.44m 1.04m -0.95" data-src="./static/glbs_gd/openscene-room0.glb"
@@ -400,20 +694,20 @@
   </div>
 </section>
 
-<!-- <section class="section"> 
+<section class="section"> 
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Acknowledgements</h2>
         <div class="content has-text-justified">
           <p>
-            We would like to thank everyone involved in the annotation for this benchmark: James Willoughby, Frances Hand, Mandolyn Morin,
+            We would like to thank the following people for their support: James Willoughby, Frances Hand, Mandolyn Morin, Ulrich-Michael Büchner and Maryam Azimpour.
           </p>
         </div>
       </div>
     </div>
   </div>
-</section>  -->
+</section> 
 
 <!-- Statcounter tracking code -->
   
