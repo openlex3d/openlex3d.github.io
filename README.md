@@ -10,6 +10,7 @@ Parts of this project page were adopted from the [Nerfies](https://nerfies.githu
 
 <details>
   <summary>Development notes</summary>
+
 ## Start using the template
 To start using the template click on `Use this Template`.
 
